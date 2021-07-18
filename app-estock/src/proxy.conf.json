@@ -1,0 +1,20 @@
+{
+    "/companyapi/*": {
+      "target": "http://localhost:9999",
+      "secure": false,
+      "pathRewrite": {
+        "^/companyapi": "/company"
+      },
+      "changeOrigin": true,
+      "logLevel": "debug"
+    },
+    "/stockapi/*": {
+      "target": "http://localhost:9999",
+      "secure": false,
+      "pathRewrite": {
+        "^/stockapi": "/stock"
+      },
+      "changeOrigin": true,
+      "logLevel": "debug"
+    }
+}

@@ -1,0 +1,58 @@
+
+<div *ngIf="stockDetails$ | async as details">
+<form [formGroup]="stockFilter" (ngSubmit)="onSubmit()">
+  From 
+  <input matInput type="date" formControlName="startDate">
+  to 
+  <input matInput type="date" formControlName="endDate">
+
+  <button mat-button color="primary" type="submit" [disabled]="stockFilter.invalid">Filter</button>
+</form>
+<!-- <mat-form-field appearance="fill">
+  <mat-label>Enter a date range</mat-label>
+  <mat-date-range-input [formGroup]="stockFilter" [rangePicker]="picker">
+    <input matStartDate formControlName="startDate" placeholder="Start date">
+    <input matEndDate formControlName="endDate" placeholder="End date">
+  </mat-date-range-input>
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-date-range-picker #picker></mat-date-range-picker>
+
+  <mat-error *ngIf="stockFilter.controls.startDate.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+  <mat-error *ngIf="stockFilter.controls.endDate.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+</mat-form-field> 
+<button mat-button color="primary" type="button" (click)="onSubmit()" [disabled]="stockFilter.invalid">Filter</button> -->
+<br>
+<table mat-table [dataSource]="details || dataSource" class="mat-elevation-z8">
+    <!-- Price Column -->
+<ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef> Stock Price </th>
+    <td mat-cell *matCellDef="let element; let odd=odd" [ngClass]="{'grey-background': odd}"> {{element.price | currency}} </td>
+   
+</ng-container>
+
+  <!-- Date Column -->
+<ng-container matColumnDef="startDate">
+    <th mat-header-cell *matHeaderCellDef> Date </th>
+    <td mat-cell *matCellDef="let element; let odd=odd" [ngClass]="{'grey-background': odd}"> {{element.startDate | date:'mediumDate'}} </td>
+    
+</ng-container>
+
+  <!-- Time Column -->
+<ng-container matColumnDef="startTime">
+    <th mat-header-cell *matHeaderCellDef> Time </th>
+    <td mat-cell *matCellDef="let element; let odd=odd" [ngClass]="{'grey-background': odd}"> {{element.startTime | date:'mediumTime'}} </td>
+    
+</ng-container>
+<ng-container matColumnDef="footer">
+  <td mat-footer-cell *matFooterCellDef>
+    <strong>MAX:</strong> {{getMaxCost(details) | currency}} <br>
+    <strong>MIN:</strong> {{getMinCost(details) | currency}}  <br>
+    <strong>AVERAGE:</strong> {{getAverageCost(details) | currency}}
+  </td>
+</ng-container>
+
+<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+<tr mat-footer-row *matFooterRowDef="['footer']"></tr>
+</table>
+</div>

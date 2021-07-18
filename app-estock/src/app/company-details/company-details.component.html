@@ -1,0 +1,48 @@
+<mat-grid-list cols="12">
+    <mat-grid-tile [colspan]="4">
+        <img src="favicon.ico" alt="Logo">AppEstock
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="4">
+        <a mat-button [routerLink]="['/allCompany']"> List All Companies </a>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="4">
+        <form #companySearchForm="ngForm" (ngSubmit)="onSubmit(companySearchForm)">   
+            <input matInput name="companyCode" ngModel placeholder="Company Code">
+            <span><button mat-button type="submit" color="primary">Search</button></span>
+        </form>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2">
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="10">
+        <div *ngIf="companyDetails$ | async as companyDetails" style="display: block; width: 100%;height: 100%;">
+            
+            <div>Company Name : {{companyDetails.name}}</div><br>
+            <div>Company Ceo : {{companyDetails.ceo}}</div><br>
+            <div>Company Turnover : {{companyDetails.turnover}}</div><br>
+            <div>Company Website : {{companyDetails.website}}</div><br>
+        </div>
+        <!-- <form [formGroup]="companyDetails">
+            <mat-form-field [formControl]="companyName">
+              <mat-label>Comapany Name</mat-label>
+              <input matInput placeholder="Name" >
+            </mat-form-field>
+            <mat-form-field [formControl]="companyCeo">
+                <mat-label>Comapany CEO</mat-label>
+                <input matInput placeholder="CEO" >
+            </mat-form-field>
+            <mat-form-field [formControl]="companyTurnover">
+                <mat-label>Comapany Turnover</mat-label>
+                <input matInput placeholder="Turnover" >
+            </mat-form-field>
+            <mat-form-field [formControl]="companyWebsite">
+                <mat-label>Comapany Website</mat-label>
+                <input matInput placeholder="Website" >
+            </mat-form-field>
+        </form> -->
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2">
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="10" [rowspan]="4">
+        <app-stock-table style="width: 100%; height: 100%;" [companyCode]="companyCode"></app-stock-table>
+    </mat-grid-tile>
+  </mat-grid-list>

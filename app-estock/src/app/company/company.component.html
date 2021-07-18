@@ -1,0 +1,31 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="code">
+        <th mat-header-cell *matHeaderCellDef> Comapny Code </th>
+        <td mat-cell *matCellDef="let element; let odd=odd" [ngClass]="{'grey-background': odd}">
+            <a [routerLink]="['/company', element.code]"> {{element.code}} </a></td>       
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Company Name </th>
+        <td mat-cell *matCellDef="let element; let odd=odd" [ngClass]="{'grey-background': odd}"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="ceo">
+        <th mat-header-cell *matHeaderCellDef> Company CEO </th>
+        <td mat-cell *matCellDef="let element; let odd=odd" [ngClass]="{'grey-background': odd}"> {{element.ceo}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="turnover">
+        <th mat-header-cell *matHeaderCellDef> Company TrunOver </th>
+        <td mat-cell *matCellDef="let element; let odd=odd" [ngClass]="{'grey-background': odd}"> {{element.turnover}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="website">
+        <th mat-header-cell *matHeaderCellDef> Company Website </th>
+        <td mat-cell *matCellDef="let element; let odd=odd" [ngClass]="{'grey-background': odd}"> {{element.website}} </td>
+    </ng-container>
+    
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
