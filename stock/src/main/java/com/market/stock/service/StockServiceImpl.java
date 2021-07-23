@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -26,9 +27,12 @@ public class StockServiceImpl implements StockService {
 	@Autowired
 	private RestTemplate restTemplate;
 	
+	@Value("${COMPANY_URI:http://localhost:1111}")
+	private String companyUri;
+	
 	@Override
 	public Stock addStock(Stock stock) throws CompanyNotFoundException{
-		String url ="http://localhost:1111/api/v1.0/market/company/" + stock.getCompanyCode();
+		String url = companyUri + "/api/v1.0/market/company/" + stock.getCompanyCode();
 		if(HttpStatus.OK.equals(restTemplate.exchange(url, HttpMethod.GET, null, String.class).getStatusCode())) {
 		stock.setStartDate(new Date());
 		return stockRepo.save(stock);}
