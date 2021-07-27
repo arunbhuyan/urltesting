@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.market</groupId>
 	<artifactId>company</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>company</name>
 	<description>Company service for Stock project</description>
 	<properties>
@@ -104,12 +104,11 @@
 						<id>default</id>
 						<goals>
 							<goal>build</goal>
-							<!-- <goal>push</goal> -->
 						</goals>
 					</execution>
 				</executions>
 				<configuration>
-					<repository>in28min/${project.name}</repository>
+					<repository>arunachyut/${project.name}</repository>
 					<tag>${project.version}</tag>
 					<skipDockerInfo>true</skipDockerInfo>
 				</configuration>
