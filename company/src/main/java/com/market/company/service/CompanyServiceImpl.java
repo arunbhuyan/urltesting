@@ -21,8 +21,8 @@ public class CompanyServiceImpl implements CompanyService{
 	@Autowired
 	private RestTemplate restTemplate;
 	
-	@Value("${STOCK_URI:http://localhost}")
-	private String stockUri;
+//	@Value("${STOCK_URI:http://localhost}")
+//	private String stockUri;
 	
 	@Override
 	public Company addNewCompany(Company company) {
@@ -33,7 +33,7 @@ public class CompanyServiceImpl implements CompanyService{
 	@Override
 	public void deleteCompany(String id) {
 		// TODO Auto-generated method stub
-		String url = stockUri + ":2222/api/v1.0/market/stock/delete/"+ id;
+		String url = "http://stock/api/v1.0/market/stock/delete/"+ id;
 		if(HttpStatus.OK.equals(restTemplate.exchange(url, HttpMethod.DELETE, null,String.class).getStatusCode()))
 		companyRepo.deleteById(id);
 	}

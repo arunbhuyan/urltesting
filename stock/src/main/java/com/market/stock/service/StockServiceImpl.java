@@ -27,12 +27,12 @@ public class StockServiceImpl implements StockService {
 	@Autowired
 	private RestTemplate restTemplate;
 	
-	@Value("${COMPANY_URI:http://localhost}")
-	private String companyUri;
+//	@Value("${COMPANY_URI:http://localhost}")
+//	private String companyUri;
 	
 	@Override
 	public Stock addStock(Stock stock) throws CompanyNotFoundException{
-		String url = companyUri + ":1111/api/v1.0/market/company/" + stock.getCompanyCode();
+		String url = "http://company/api/v1.0/market/company/" + stock.getCompanyCode();
 		if(HttpStatus.OK.equals(restTemplate.exchange(url, HttpMethod.GET, null, String.class).getStatusCode())) {
 		stock.setStartDate(new Date());
 		return stockRepo.save(stock);}
