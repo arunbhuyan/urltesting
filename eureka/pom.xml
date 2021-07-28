@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.market</groupId>
 	<artifactId>eureka</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.5</version>
 	<name>eureka</name>
 	<description>Eureka sever for Stock project</description>
 	<properties>
