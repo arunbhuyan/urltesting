@@ -33,7 +33,7 @@ public class CompanyServiceImpl implements CompanyService{
 	@Override
 	public void deleteCompany(String id) {
 		// TODO Auto-generated method stub
-		String url = "http://stock/api/v1.0/market/stock/delete/"+ id;
+		String url = "lb://stock/api/v1.0/market/stock/delete/"+ id;
 		if(HttpStatus.OK.equals(restTemplate.exchange(url, HttpMethod.DELETE, null,String.class).getStatusCode()))
 		companyRepo.deleteById(id);
 	}

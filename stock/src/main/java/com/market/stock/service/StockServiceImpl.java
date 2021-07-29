@@ -32,7 +32,7 @@ public class StockServiceImpl implements StockService {
 	
 	@Override
 	public Stock addStock(Stock stock) throws CompanyNotFoundException{
-		String url = "http://company/api/v1.0/market/company/" + stock.getCompanyCode();
+		String url = "lb://company/api/v1.0/market/company/" + stock.getCompanyCode();
 		if(HttpStatus.OK.equals(restTemplate.exchange(url, HttpMethod.GET, null, String.class).getStatusCode())) {
 		stock.setStartDate(new Date());
 		return stockRepo.save(stock);}
