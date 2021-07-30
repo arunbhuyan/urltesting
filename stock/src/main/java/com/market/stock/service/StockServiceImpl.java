@@ -1,14 +1,9 @@
 package com.market.stock.service;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -27,9 +22,6 @@ public class StockServiceImpl implements StockService {
 	@Autowired
 	private RestTemplate restTemplate;
 	
-//	@Value("${COMPANY_URI:http://localhost}")
-//	private String companyUri;
-	
 	@Override
 	public Stock addStock(Stock stock) throws CompanyNotFoundException{
 		String url = "lb://company/api/v1.0/market/company/" + stock.getCompanyCode();
@@ -42,8 +34,7 @@ public class StockServiceImpl implements StockService {
 	}
 
 	@Override
-	public List<Stock> getStockInDateRange(String companyCode, Date startDate, Date endDate) {
-		
+	public List<Stock> getStockInDateRange(String companyCode, Date startDate, Date endDate) {		
 		return stockRepo.stockInRange(companyCode,startDate,endDate);
 	}
 	

@@ -1,6 +1,5 @@
 package com.market.stock.controller;
 
-import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 import com.market.stock.model.Stock;
 import com.market.stock.service.StockService;
@@ -27,12 +25,6 @@ import com.market.stock.service.StockService;
 public class StockController {
 	@Autowired
 	private StockService stockService;
-	
-	@GetMapping
-	public ResponseEntity<?> get(){
-		//logger.warn("companyCode");
-		return new ResponseEntity<String>("test", HttpStatus.OK);
-	}
 	
 	@PostMapping(value = "/add/{companyCode}")
 	public ResponseEntity<?> newStock(@RequestBody Stock stock, @PathVariable(name="companyCode") Integer code){

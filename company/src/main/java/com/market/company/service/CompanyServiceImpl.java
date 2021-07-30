@@ -21,18 +21,13 @@ public class CompanyServiceImpl implements CompanyService{
 	@Autowired
 	private RestTemplate restTemplate;
 	
-//	@Value("${STOCK_URI:http://localhost}")
-//	private String stockUri;
-	
 	@Override
 	public Company addNewCompany(Company company) {
-		// TODO Auto-generated method stub
 		return companyRepo.save(company);
 	}
 
 	@Override
 	public void deleteCompany(String id) {
-		// TODO Auto-generated method stub
 		String url = "lb://stock/api/v1.0/market/stock/delete/"+ id;
 		if(HttpStatus.OK.equals(restTemplate.exchange(url, HttpMethod.DELETE, null,String.class).getStatusCode()))
 		companyRepo.deleteById(id);
@@ -40,26 +35,22 @@ public class CompanyServiceImpl implements CompanyService{
 
 	@Override
 	public Company updateNewCompany(Company company) {
-		// TODO Auto-generated method stub
 		return companyRepo.save(company);
 	}
 	
 	@Override
 	public List<Company> getAllCompany() {
-		// TODO Auto-generated method stub
 		return companyRepo.findAll();
 	}
 
 
 	@Override
 	public Company getCompany(String id) {
-		// TODO Auto-generated method stub
 		return companyRepo.findById(id).get();
 	}
 
 	@Override
 	public boolean hasCompany(String id) {
-		// TODO Auto-generated method stub
 		return companyRepo.findById(id).isPresent() ? Boolean.TRUE : Boolean.FALSE;
 	}
 }

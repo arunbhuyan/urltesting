@@ -28,11 +28,6 @@ public class CompanyController {
 	@Autowired
 	private CompanyService companyService;
 	
-	@GetMapping(path="/test")
-	public ResponseEntity<?> test(){
-		return new ResponseEntity(HttpStatus.OK);
-	}
-	
 	@PostMapping(path = "/register")
 	@ApiOperation(value = "Register new company")
 	public ResponseEntity<Company> registerCompany(@Valid @RequestBody Company company){
