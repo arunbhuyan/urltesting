@@ -69,12 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "app-estock:build:production",
-              "proxyConfig": "src/proxy.conf.json"
+              "browserTarget": "app-estock:build:production"
             },
             "development": {
-              "browserTarget": "app-estock:build:development",
-              "proxyConfig": "src/proxy.conf.json"
+              "browserTarget": "app-estock:build:development"
             }
           },
           "defaultConfiguration": "development"

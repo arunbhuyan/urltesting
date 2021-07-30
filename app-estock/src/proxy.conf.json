@@ -1,18 +1,18 @@
 {
     "/companyapi/*": {
-      "target": "http://localhost:9999",
+      "target": "http://52.66.251.4:9999",
       "secure": false,
       "pathRewrite": {
-        "^/companyapi": "/company"
+        "^/companyapi": "/company-api"
       },
       "changeOrigin": true,
       "logLevel": "debug"
     },
     "/stockapi/*": {
-      "target": "http://localhost:9999",
+      "target": "http://52.66.251.4:9999",
       "secure": false,
       "pathRewrite": {
-        "^/stockapi": "/stock"
+        "^/stockapi": "/stock-api"
       },
       "changeOrigin": true,
       "logLevel": "debug"

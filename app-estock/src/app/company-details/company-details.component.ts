@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { take, switchMap } from 'rxjs/operators';
+import { take, switchMap, catchError } from 'rxjs/operators';
 import { CompanyService } from '../company.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
@@ -43,7 +43,7 @@ export class CompanyDetailsComponent implements OnInit {
         this.companyCode = params.get('id') || '';
         return this.companyService.getCompany(this.companyCode);
       })
-    );
+      );
   }
   onSubmit(form: any){
     this.companyService.validCompany(form.value.companyCode).pipe(take(1)).subscribe(data =>{
